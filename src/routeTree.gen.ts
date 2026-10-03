@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BillingRouteImport } from './routes/billing'
+import { Route as CasesRouteImport } from './routes/cases'
+import { Route as ClientsRouteImport } from './routes/clients'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as HearingsRouteImport } from './routes/hearings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BillingRoute = BillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientsRoute = ClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HearingsRoute = HearingsRouteImport.update({
+  id: '/hearings',
+  path: '/hearings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/billing': typeof BillingRoute
+  '/cases': typeof CasesRoute
+  '/clients': typeof ClientsRoute
+  '/documents': typeof DocumentsRoute
+  '/hearings': typeof HearingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/billing': typeof BillingRoute
+  '/cases': typeof CasesRoute
+  '/clients': typeof ClientsRoute
+  '/documents': typeof DocumentsRoute
+  '/hearings': typeof HearingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/billing': typeof BillingRoute
+  '/cases': typeof CasesRoute
+  '/clients': typeof ClientsRoute
+  '/documents': typeof DocumentsRoute
+  '/hearings': typeof HearingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/billing' | '/cases' | '/clients' | '/documents' | '/hearings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/billing' | '/cases' | '/clients' | '/documents' | '/hearings'
+  id:
+    | '__root__'
+    | '/'
+    | '/billing'
+    | '/cases'
+    | '/clients'
+    | '/documents'
+    | '/hearings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BillingRoute: typeof BillingRoute
+  CasesRoute: typeof CasesRoute
+  ClientsRoute: typeof ClientsRoute
+  DocumentsRoute: typeof DocumentsRoute
+  HearingsRoute: typeof HearingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/billing': {
+      id: '/billing'
+      path: '/billing'
+      fullPath: '/billing'
+      preLoaderRoute: typeof BillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clients': {
+      id: '/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof ClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hearings': {
+      id: '/hearings'
+      path: '/hearings'
+      fullPath: '/hearings'
+      preLoaderRoute: typeof HearingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BillingRoute: BillingRoute,
+  CasesRoute: CasesRoute,
+  ClientsRoute: ClientsRoute,
+  DocumentsRoute: DocumentsRoute,
+  HearingsRoute: HearingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
