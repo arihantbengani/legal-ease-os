@@ -39,7 +39,8 @@ function HearingsPage() {
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </AppLayout>
   );
