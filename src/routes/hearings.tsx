@@ -21,11 +21,13 @@ function HearingsPage() {
   return (
     <AppLayout title="Court Diary" subtitle="Upcoming hearings and listings">
       <div className="space-y-4">
-        {hearings.map((h) => (
+        {hearings.map((h) => {
+          const [month = "", day = "", year = ""] = h.date.split(" ");
+          return (
           <div key={h.id} className="flex gap-5 rounded-lg border border-border bg-card p-5 shadow-sm">
             <div className="flex w-24 flex-col items-center justify-center rounded-md bg-primary py-3 text-primary-foreground">
-              <span className="font-display text-2xl font-bold">{h.date.split(" ")[1].replace(",", "")}</span>
-              <span className="text-xs uppercase tracking-wide">{h.date.split(" ")[0]} {h.date.split(" ")[2]}</span>
+              <span className="font-display text-2xl font-bold">{day.replace(",", "")}</span>
+              <span className="text-xs uppercase tracking-wide">{month} {year}</span>
             </div>
             <div className="flex-1">
               <p className="font-display text-lg font-bold text-foreground">{h.caseTitle}</p>
