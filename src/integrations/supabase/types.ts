@@ -14,7 +14,174 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cases: {
+        Row: {
+          case_type: string
+          client: string
+          court: string
+          created_at: string
+          id: string
+          next_hearing: string | null
+          status: string
+          title: string
+          user_id: string
+          value: number
+        }
+        Insert: {
+          case_type?: string
+          client?: string
+          court?: string
+          created_at?: string
+          id?: string
+          next_hearing?: string | null
+          status?: string
+          title: string
+          user_id?: string
+          value?: number
+        }
+        Update: {
+          case_type?: string
+          client?: string
+          court?: string
+          created_at?: string
+          id?: string
+          next_hearing?: string | null
+          status?: string
+          title?: string
+          user_id?: string
+          value?: number
+        }
+        Relationships: []
+      }
+      clients: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string
+          user_id: string
+        }
+        Insert: {
+          company?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name: string
+          phone?: string
+          user_id?: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      documents: {
+        Row: {
+          case_title: string
+          created_at: string
+          id: string
+          kind: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          case_title?: string
+          created_at?: string
+          id?: string
+          kind?: string
+          name: string
+          user_id?: string
+        }
+        Update: {
+          case_title?: string
+          created_at?: string
+          id?: string
+          kind?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      hearings: {
+        Row: {
+          case_title: string
+          court: string
+          created_at: string
+          hearing_date: string
+          hearing_time: string
+          id: string
+          judge: string
+          purpose: string
+          user_id: string
+        }
+        Insert: {
+          case_title: string
+          court?: string
+          created_at?: string
+          hearing_date: string
+          hearing_time?: string
+          id?: string
+          judge?: string
+          purpose?: string
+          user_id?: string
+        }
+        Update: {
+          case_title?: string
+          court?: string
+          created_at?: string
+          hearing_date?: string
+          hearing_time?: string
+          id?: string
+          judge?: string
+          purpose?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      invoices: {
+        Row: {
+          amount: number
+          client: string
+          created_at: string
+          due: string | null
+          id: string
+          invoice_no: string
+          issued: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          client: string
+          created_at?: string
+          due?: string | null
+          id?: string
+          invoice_no?: string
+          issued?: string
+          status?: string
+          user_id?: string
+        }
+        Update: {
+          amount?: number
+          client?: string
+          created_at?: string
+          due?: string | null
+          id?: string
+          invoice_no?: string
+          issued?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
